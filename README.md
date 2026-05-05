@@ -1,3 +1,35 @@
+# Fork Repository Note
+
+The repository is fork [repository](https://github.com/topjohnwu/zygisk-module-sample).
+Repository modification
+> Fix build
+> Set optput
+
+How clone repository
+```shell
+git clone --recurse-submodules https://github.com/fakeandtrue/zygisk-module-sample.git
+```
+Or
+```shell
+git clone https://github.com/fakeandtrue/zygisk-module-sample.git
+git submodule update --init --recursive
+```
+
+How build
+> Use gradle build
+> > If you want set NDK version or SDK version, you want modify `ndkVersion` or `compileSdkVersion` in `module/build.gradle`.
+>
+> Manual build
+> > Use ndk-build in `module/jni`, the build want need modify libcxx path in `Android.mk`.
+> > Remove `jni/` from libcxx path
+
+Note
+- Gradle build
+    - The libcxx path is `jni/libcxx/Android.mk`
+- Manual build
+    - The libcxx path is `libcxx/Android.mk`
+- NDK version don't be too low `21.0.6113669`
+
 # Developing Zygisk Modules
 
 This repository hosts a template zygisk module for developers to start developing Zygisk modules. Before developing Zygisk modules, you should first check out the official documentation for [Magisk Modules](https://topjohnwu.github.io/Magisk/guides.html). Do not fork this repository for your new module; either manually clone this repository, or press the "Use this template" button in the GitHub UI.

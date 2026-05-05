@@ -3,9 +3,28 @@ plugins {
 }
 
 android {
+    compileSdkVersion 30
+    ndkVersion "28.0.13004108"
     externalNativeBuild {
         ndkBuild {
             path("jni/Android.mk")
         }
     }
+}
+
+afterEvaluate {
+task releaseOutput(type: Copy) {
+    from("build/intermediates/stripped_native_libs/release/out/lib")
+    into("$outDir/release")
+    include("**/*")
+}
+
+task debugOutput(type: Copy) {
+    from("build/intermediates/stripped_native_libs/debug/out/lib")
+    into("$outDir/debug")
+    include("**/*")
+}
+
+stripReleaseDebugSymbols.finalizedBy("releaseOutput")
+stripDebugDebugSymbols.finalizedBy("debugOutput")
 }
