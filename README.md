@@ -28,7 +28,7 @@ Note
     - The libcxx path is `jni/libcxx/Android.mk`
 - Manual build
     - The libcxx path is `libcxx/Android.mk`
-- NDK version don't be too low `21.0.6113669`
+- NDK version don't be too low `28.0.13004108`
 
 # Developing Zygisk Modules
 
